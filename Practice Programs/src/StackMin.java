@@ -12,6 +12,8 @@ import java.util.EmptyStackException;
  * @author satya
  */
 
+
+
 class StackNode
 {
     StackNode next;
@@ -21,6 +23,7 @@ class StackNode
 class MyStack
 {
     StackNode top;
+    int min =0;
     public void push(int n)
     {
         StackNode newitem = new StackNode();
@@ -29,12 +32,17 @@ class MyStack
         if(top==null)
         {
             top=newitem;
+            min=top.data; //This new addition is make all the methods O(1).
         }
         else
         {
             newitem.next=top;
             top=newitem;
+            if(newitem.data<min)
+                min=newitem.data;
         }
+        
+      
     }
     public int pop()
     {
@@ -48,27 +56,28 @@ class MyStack
         
     }
     
-    public int min()
+    public int getmin()
     {
-        int min=top.data;
-        if(top==null)
-        {
-            throw new EmptyStackException();
-        }
-        
-        while (top.next!=null)
-        {
-            if(min>top.data)
-            {
-                min=top.data;
-               
-            }
-            
-            
-             top=top.next;
-             
-        }
-        return min;
+//        int min=top.data;  This method was implementing in O(n) time,That logic has been commeneted below.
+       
+//        if(top==null)
+//        {
+//            throw new EmptyStackException();
+//        }
+//        
+//        while (top.next!=null)
+//        {
+//            if(min>top.data)
+//            {
+//                min=top.data;
+//               
+//            }
+//            
+//            
+//             top=top.next;
+//             
+//        }
+     return min;
     }
     
 }
@@ -83,10 +92,14 @@ public class StackMin {
         stack.push(10);
         stack.push(5);
         stack.push(7);
-        stack.push(1);
+        stack.push(11);
+        stack.push(90);
+        stack.push(19);
+        stack.push(100);
         
         
-        System.out.println(stack.min());
+        
+        System.out.println(stack.getmin());
        
     }
 }
