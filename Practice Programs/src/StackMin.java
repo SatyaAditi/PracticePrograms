@@ -95,7 +95,7 @@ public class StackMin {
         stack.push(11);
         stack.push(90);
         stack.push(19);
-        stack.push(100);
+        stack.push(1);
         
         
         
